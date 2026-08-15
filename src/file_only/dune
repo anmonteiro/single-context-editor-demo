@@ -1,0 +1,3 @@
+(library
+ (name editor_mode_melange_file_only)
+ (modes melange))

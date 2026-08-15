@@ -1,0 +1,70 @@
+(library
+ (name editor_mode_mixed_override)
+ (modes :standard melange)
+ (modules shared override)
+ (preprocess
+  (action
+   (run sh %{dep:pp_ocaml.sh} %{input-file})))
+ (melange.preprocess
+  (action
+   (run sh %{dep:pp_melange.sh} %{input-file}))))
+
+(library
+ (name editor_mode_reason_override)
+ (modes :standard melange)
+ (modules reason_shared reason_override))
+
+(library
+ (name editor_mode_reason_ppx_override)
+ (modes :standard melange)
+ (modules reason_ppx_user foo)
+ (preprocess
+  (action
+   (run sh %{dep:pp_reason.sh} %{input-file})))
+ (melange.preprocess
+  (pps melange.ppx)))
+
+(library
+ (name editor_mode_narrowed_modules)
+ (modes :standard melange)
+ (modules common ocaml_extra)
+ (melange.modules common melange_extra))
+
+(library
+ (name editor_mode_native_dep)
+ (modes byte)
+ (modules native_dep))
+
+(library
+ (name editor_mode_melange_dep)
+ (modes melange)
+ (modules melange_dep))
+
+(library
+ (name editor_mode_conditional_deps)
+ (modes :standard melange)
+ (modules dep_user)
+ (libraries editor_mode_native_dep)
+ (melange.libraries editor_mode_melange_dep))
+
+(library
+ (name editor_mode_demo_ocaml_only)
+ (modes byte)
+ (modules ocaml_only))
+
+(library
+ (name editor_mode_demo_melange_only)
+ (modes melange)
+ (modules melange_only))
+
+(melange.emit
+ (target output)
+ (libraries
+  editor_mode_mixed_override
+  editor_mode_reason_override
+  editor_mode_reason_ppx_override
+  editor_mode_narrowed_modules
+  editor_mode_conditional_deps
+  editor_mode_demo_melange_only
+  editor_mode_melange_file_only)
+ (modules app))
