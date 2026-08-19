@@ -9,11 +9,11 @@
         "revdeps-dune": "revdeps-dune"
       },
       "locked": {
-        "lastModified": 1787170118,
-        "narHash": "sha256-ZIhJZ+i3wOuaG7pl9s2/kTKtYnb+9XRr4a3d9M77Z1U=",
+        "lastModified": 1787174324,
+        "narHash": "sha256-kIFc4zyluF8o5qdu6XO6/keW3BdVWm8GBbR6ITgAw7I=",
         "owner": "anmonteiro",
         "repo": "dune",
-        "rev": "b2566dbf0f1400505f05adb02cfc80d07abece6b",
+        "rev": "eb042b96d555f347d0cc89776c6bd8343c978b65",
         "type": "github"
       },
       "original": {
