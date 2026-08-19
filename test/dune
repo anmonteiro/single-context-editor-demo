@@ -1,0 +1,7 @@
+(cram
+ (deps
+  ../dune-project
+  ../dune-workspace
+  (source_tree ../src)
+  protocol_client.mjs
+  lsp_client.mjs))

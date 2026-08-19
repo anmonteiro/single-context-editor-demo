@@ -1,7 +1,7 @@
 (library
  (name editor_mode_mixed_override)
  (modes :standard melange)
- (modules shared override)
+ (modules shared override paired paired_intf)
  (preprocess
   (action
    (run sh %{dep:pp_ocaml.sh} %{input-file})))
